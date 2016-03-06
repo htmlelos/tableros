@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  legend Login
+  form(action="/register" method="POST")
+    fieldset
+      label(for="username") Usuario
+      input(id="username" type="text" name="username")
+    fieldset
+      label(for="password") Contraseña
+      input(id="password" type="password" name="password")
+    fieldset
+      input(id="confirm" type="submit" value="Registrarse")
