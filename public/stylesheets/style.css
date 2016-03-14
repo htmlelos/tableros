@@ -2,8 +2,24 @@ body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-
 a {
   color: #00B7FF;
   display: block;
+}
+.usuario {
+  background-color: aliceblue;
+  border: 1px solid black;
+}
+sidebar {
+  float: left;
+  width: 20%;
+}
+.main {
+  float: left;
+  width: 80%;
+}
+
+.info {
+  display: inline-block;
+  margin: 0 2em 0 1em;
 }

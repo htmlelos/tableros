@@ -1,0 +1,19 @@
+extends ../layout
+
+block content
+  header
+    h1= title
+  sidebar
+    ul
+      li
+        a(href="/users/usuario") Agregar un nuevo usuario
+      li
+        a(href="/users/configurar") Volver
+  .main
+    each user in users
+      .usuario
+        .info Usuario: #{user.email}
+        .info Contraseña: #{user.password}
+        a.info(href="/users/usuario/"+user._id+"/edit") Modificar
+        a.info(href="/users/usuario/"+user._id+"/delete") Eliminar
+

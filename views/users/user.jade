@@ -1,0 +1,25 @@
+extends ../layout
+
+block content
+  if user._id===undefined
+    form(action="/users/usuario" method="POST")
+      legend= title
+        fieldset
+          label(for="username") Usuario
+          input(id="username" type="text" name="username" value=user.email)
+        fieldset
+          label(for="password") Password
+          input(id="password" type="text" name="password" value=user.password)
+        fieldset
+          input(id="confirmar" type="submit" value="Confirmar")
+  else
+    form(action="/users/usuario/"+user._id method="PUT")
+      legend= title
+        fieldset
+          label(for="username") Usuario
+          input(id="username" type="text" name="username" value=user.email)
+        fieldset
+          label(for="password") Password
+          input(id="password" type="text" name="password" value=user.password)
+        fieldset
+          input(id="confirmar" type="submit" value="Actualizar")

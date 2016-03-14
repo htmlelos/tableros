@@ -8,9 +8,12 @@ var User = require('../models/user');
 /* GET home page. */
 router.get('/', function (req, res, next) {
   'use strict';
-  res.render('index', {
-    title: 'Express'
-  });
+  console.log('Session: ' + req.session.user_id);
+  if (req.session.user_id === undefined) {
+    res.redirect('/login')
+  } else {
+    res.render('/main/main', {title: 'Sistema de Gestión de Tableros'})
+  }
 });
 
 router
@@ -20,8 +23,8 @@ router
   })
   .post('/login', function (req, res, next) {
     'use strict';
-    //console.log('Username: ' + req.body.username);
-    //console.log('Contraseña: ' + req.body.password);
+    console.log('Username: ' + req.body.username);
+    console.log('Contraseña: ' + req.body.password);
     User.findOne({
       "email": req.body.username
     }, function (err, user) {
@@ -30,7 +33,10 @@ router
       } else {
         console.log('password: ' + user.password);
         if (user.password === req.body.password) {
-          res.send('El usuario ha sido autenticado');
+          req.session.user_id = user._id;
+          console.log(req.session.user_id);
+          //res.send('El usuario ha sido autenticado');
+          res.render('./main/main', {title: 'Sistema de Gestion de Tableros'});
         } else {
           res.send('Por favor verifique sus datos');
         }
